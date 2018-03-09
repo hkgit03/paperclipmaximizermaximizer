@@ -1,5 +1,19 @@
-// TODO: Run bot() asynchronously, wait an amount of time, then kill the running bot and count paperclips
+// Arena - run the bot, kill it, measure its fitness
 
-console.log("loading arena");
+(function(){
 
-bot();
+	const timeout = 5 * 1000; // in milliseconds
+
+	console.log("Loading arena. Timeout in ms:", timeout);
+
+	// run bot
+	var interval = bot();
+	setTimeout(
+		function(){
+			clearInterval(interval);
+			var clips = document.getElementById("clips");
+			var clipAmount = parseInt(clips.textContent);
+			// TODO: Use clipAmount
+		}, timeout);
+
+})();
