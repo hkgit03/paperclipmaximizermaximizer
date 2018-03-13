@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/perl
 use strict;
 use warnings;
 use v5.10;
@@ -7,7 +7,7 @@ my $mutationProb = 1 / 20;
 
 # handle args
 die "Too few args" if $#ARGV < 1;
-my $childAmount = (defined $ARGV[2] and $ARGV[2] =~ /\d+/) ? abs($ARGV[2]) : 1;
+my $childAmount = (defined $ARGV[2] and $ARGV[2] =~ /\d+/) ? abs($ARGV[2]) : 2; # at least two children are needed in order to recombine them
 
 # recombine parents
 foreach my $child (1..$childAmount) {
