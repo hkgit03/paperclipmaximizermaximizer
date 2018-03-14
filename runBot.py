@@ -10,17 +10,17 @@ if len(sys.argv) < 3:
     sys.stderr.write("No timeout given\n")
     sys.exit(1)
 
-child = sys.argv[1]
-timeout = sys.argv[2]
+child = int(sys.argv[1])
+timeout = int(sys.argv[2])
 
 
-outFile = open(child + ".result", "w")
+outFile = open(str(child) + ".result", "w")
 
 def runBot():
     # run
     browser = Browser('firefox')
     cwd = os.path.dirname(os.path.realpath(__file__))
-    browser.visit("file://" + cwd + "/paperclips_" + child + "/index.html")
+    browser.visit("file://" + cwd + "/paperclips_" + str(child) + "/index.html")
 
     # wait
     time.sleep(timeout)
