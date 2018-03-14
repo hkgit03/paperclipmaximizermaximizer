@@ -30,6 +30,7 @@ foreach my $child (1..$childAmount) {
 						$value /= 2;
 					}
 				}
+				# TODO: Consider rounding variables to integers which were ints in the first place
 			}
 			print $childFile $pre . "const " . $identifier . " = " . $value . ";\n";
 		} else {
