@@ -16,7 +16,7 @@ while [ $run ]; do
 	run=''
 
 	# recombine parents into children
-	./recombine.pl "parent0.js" "parent1.js" "$amountOfChildren"
+	./recombine.pl "parent0.js" "parent1.js" "$amountOfChildren" --no-sex
 
 	# prepare and run the children 
 	for child in child*.js; do

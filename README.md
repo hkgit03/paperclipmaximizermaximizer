@@ -20,6 +20,6 @@ Execute `make run` and watch. To run indefinitely, execute `yes | make run`.
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `paperclips/` | mirror of the game, cloned from [siemanko/paperclips](https://github.com/siemanko/paperclips), adapted to include the bot from [marclitchfield/paperclips-auto](https://github.com/marclitchfield/paperclips-auto) |
 | `Makefile` | Installs dependencies (`make`), runs the evolution (`make run`), cleans up |
-| `recombine.pl` | Recombines two parents into a certain number of children and mutates them. |
+| `recombine.pl` | Recombines two parents into a certain number of children and mutates them. If it is called with `--no-sex` as the fourth argument, it clones just the one parent before mutating the children, thus implementing asexual reproduction. |
 | `arena.sh` | Sets up the game for each child, runs them by calling `runBot.py`, and chooses the two new parents according to the resulting fitness. |
 | `runBot.py` | Runs a bot for a certain amount of time, then reads the resulting amount of paperclips, thus determining the fitness of the bot. |

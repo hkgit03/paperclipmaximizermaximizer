@@ -8,6 +8,7 @@ my $mutationProb = 1 / 20;
 # handle args
 die "Too few args" if $#ARGV < 1;
 my $childAmount = (defined $ARGV[2] and $ARGV[2] =~ /\d+/) ? abs($ARGV[2]) : 2; # at least two children are needed in order to recombine them
+my $noSex = (defined $ARGV[3] and $ARGV[3] eq "--no-sex") ? 1 : 0;
 
 # recombine parents
 foreach my $child (1..$childAmount) {
@@ -16,7 +17,8 @@ foreach my $child (1..$childAmount) {
 	open(my $childFile, ">", "child$child.js") or die "Cannot open/create child $child";
 	foreach my $line0 (<$parent0>) {
 		my $line1 = (<$parent1>);
-		my $line = int(rand(2)) > 0 ? $line1 : $line0;
+		my $parentChoice = $noSex ? 0 : int(rand(2));
+		my $line = $parentChoice > 0 ? $line1 : $line0;
 		if ( $line =~ /^(\s+)const\s([^ ]+)\s*=\s*(\d.*|true|false);/) {
 			my ($pre, $identifier, $value) = ($1, $2, $3);
 			if ( rand() lt $mutationProb ) {
