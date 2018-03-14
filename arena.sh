@@ -8,8 +8,8 @@ if [[ ! "$1" =~ ^[0-9]+$ || ! "$2" =~ ^[0-9]+$ ]]; then
 fi
 
 # Around the amount of seconds of overhead (starting and ending browsers)
-# 3 times the amount of children works well in my experience.
-overheadBufferTime=$((3 * $amountOfChildren));
+# 4 times the amount of children works well in my experience.
+overheadBufferTime=$((4 * $amountOfChildren));
 
 run="yep"
 while [ $run ]; do
