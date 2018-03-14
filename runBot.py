@@ -6,9 +6,12 @@ from splinter import Browser
 if len(sys.argv) < 2:
     sys.stderr.write("No child number given\n")
     sys.exit(1)
+if len(sys.argv) < 3:
+    sys.stderr.write("No timeout given\n")
+    sys.exit(1)
 
-child = sys.argv[1];
-deadline = 5
+child = sys.argv[1]
+timeout = sys.argv[2]
 
 
 outFile = open(child + ".result", "w")
@@ -20,7 +23,7 @@ def runBot():
     browser.visit("file://" + cwd + "/paperclips_" + child + "/index.html")
 
     # wait
-    time.sleep(deadline)
+    time.sleep(timeout)
     result = int(browser.find_by_id('clips').value)
 
     # close
@@ -28,7 +31,8 @@ def runBot():
         for w in browser.windows:
             w.close()
     except:
-        sys.stderr.write("Error closing browser window\n")
+        # TODO Somehow we always land in here
+        pass
 
     # deliver
     return result
